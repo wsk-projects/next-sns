@@ -4,18 +4,18 @@ import { ReactNode } from "react";
 interface ContainerProps {
   as?: keyof JSX.IntrinsicElements;
   id?: string;
-  children: ReactNode;
   className?: string;
+  children: ReactNode;
   padding?: boolean;
 }
 
 export default function Container({
   as: Tag = "div",
   id = undefined,
-  children,
   className,
+  children,
   padding = true,
-}: ContainerProps) {
+}: ContainerProps): React.ReactNode {
   const baseStyle = "mx-auto w-full";
 
   return (
