@@ -8,9 +8,9 @@ import clsx from "clsx";
 import { Compass, House, MessageCircle, SquarePlus, UserRound } from "lucide-react";
 
 export default function Navigation(): React.ReactNode {
-  const isDesktop = useBreakpoint("lg");
+  const breakpoint = useBreakpoint();
 
-  return isDesktop ? <NavDesktop /> : <NavMobile />;
+  return breakpoint === "lg" ? <NavDesktop /> : <NavMobile />;
 }
 
 const NavDesktop = (): React.ReactNode => {
