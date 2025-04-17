@@ -13,6 +13,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backdropBlur: {
+        tiny: "1px",
+        xs: "2px",
+      },
     },
   },
   plugins: [],
