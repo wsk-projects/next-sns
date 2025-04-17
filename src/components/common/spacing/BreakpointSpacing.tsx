@@ -4,7 +4,7 @@ import { useBreakpoint } from "@/hooks/useBreakpoint";
 import clsx from "clsx";
 
 interface BreakpointSpacingProps {
-  direction: "horizontal" | "vertical";
+  direction: "horizontal" | "horizontal";
   size: "12" | "16" | "20";
 }
 

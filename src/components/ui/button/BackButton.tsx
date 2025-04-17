@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/common/button/Button";
+import Button from "@/components/common/interaction/Button";
 import { ArrowLeft } from "lucide-react";
 
 export default function HeaderBackButton(): React.ReactNode {

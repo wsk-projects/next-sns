@@ -1,38 +1,51 @@
+import { PositionProps, BOTTOM, LEFT, RIGHT, TOP, Z_INDEX } from "@/types/props/positionProps";
 import clsx from "clsx";
-import Container from "./Container";
+import type { ReactNode } from "react";
 
-interface FloatingProps {
+interface FloatingBuilderProps extends PositionProps {
   as?: keyof JSX.IntrinsicElements;
-  children: React.ReactNode;
+  children: ReactNode;
+  id?: string;
   className?: string;
-  position?: "top" | "bottom";
-  height?: "12" | "16" | "20";
+  padding?: boolean;
 }
 
-const positionStyles = {
-  top: "top-0 left-0",
-  bottom: "bottom-0 left-0",
-};
-
-const heightStyles = {
-  "12": "min-h-12",
-  "16": "min-h-16",
-  "20": "min-h-20",
-};
-
-export default function Floating({
-  as = "div",
+function FloatingBuilder({
+  as: Tag = "div",
+  id,
   children,
   className,
-  position = "top",
-  height = "16",
-}: FloatingProps): React.ReactNode {
-  const baseStyle = "flex items-center justify-between fixed z-10 w-full";
-  const positionStyle = positionStyles[position];
-  const heightStyle = heightStyles[height];
+  top,
+  right,
+  bottom,
+  left,
+  zIndex = "10",
+  padding = false,
+}: FloatingBuilderProps): React.ReactNode {
+  const baseStyle = "flex items-center fixed";
+
   return (
-    <Container as={as} className={clsx(baseStyle, positionStyle, heightStyle, className)}>
+    <Tag
+      id={id}
+      className={clsx(
+        baseStyle,
+        top && TOP[top],
+        right && RIGHT[right],
+        bottom && BOTTOM[bottom],
+        left && LEFT[left],
+        Z_INDEX[zIndex],
+        padding && "px-4 py-2",
+        className
+      )}
+    >
       {children}
-    </Container>
+    </Tag>
   );
 }
+
+export const Floating = {
+  Top: (props: Omit<FloatingBuilderProps, "top" | "bottom">) => FloatingBuilder({ top: "0", ...props }),
+  Right: (props: Omit<FloatingBuilderProps, "right" | "left">) => FloatingBuilder({ right: "0", ...props }),
+  Left: (props: Omit<FloatingBuilderProps, "left" | "right">) => FloatingBuilder({ left: "0", ...props }),
+  Bottom: (props: Omit<FloatingBuilderProps, "bottom" | "top">) => FloatingBuilder({ bottom: "0", ...props }),
+};
