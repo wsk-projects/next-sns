@@ -1,3 +1,4 @@
+import BreakpointSpacing from "../components/common/spacing/BreakpointSpacing";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
 import Main from "./main/Main";
@@ -7,9 +8,13 @@ export default function DefaultLayout({ children }: { children: React.ReactNode 
   return (
     <Screen>
       <Header />
-      <Navigation />
-      <Main>{children}</Main>
+      <BreakpointSpacing direction="horizontal" size="16" />
+      <div className="flex">
+        <Navigation />
+        <Main>{children}</Main>
+      </div>
       <Footer />
+      <BreakpointSpacing direction="horizontal" size="12" />
     </Screen>
   );
 }

@@ -16,7 +16,7 @@ export default function Container({
   children,
   padding = true,
 }: ContainerProps): React.ReactNode {
-  const baseStyle = "mx-auto w-full";
+  const baseStyle = "mx-auto w-full h-auto";
 
   return (
     <Tag id={id} className={clsx(baseStyle, padding && "px-4 py-2", className)}>

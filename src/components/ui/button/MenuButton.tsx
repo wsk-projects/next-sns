@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/common/button/Button";
+import Button from "@/components/common/interaction/Button";
 import { Menu } from "lucide-react";
 
 export default function MenuButton(): React.ReactNode {
