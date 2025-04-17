@@ -21,8 +21,8 @@ const verticalSizes = {
 };
 
 export default function BreakpointSpacing({ direction, size }: BreakpointSpacingProps): React.ReactNode {
-  const isDesktop = useBreakpoint("lg");
+  const breakpoint = useBreakpoint();
   const spaceStyle = direction === "horizontal" ? horizontalSizes[size] : verticalSizes[size];
 
-  return <div className={clsx(!isDesktop && spaceStyle)} />;
+  return <div className={clsx(breakpoint === "lg" && spaceStyle)} />;
 }
